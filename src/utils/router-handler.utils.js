@@ -19,6 +19,7 @@ app.use("/user",userRouter)
 app.use("/post",postRouter)
 app.use("/comment",CommentRouter)
 app.use("/react",reactRouter)
+app.get("/",async(req,res)=>res.status(200).json({message:"hellofrom social app"}))
 }
 
 
