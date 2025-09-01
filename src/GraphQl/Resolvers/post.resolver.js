@@ -24,7 +24,7 @@ export const addPostsResolver=async(args)=>{
     const {accesstoken}=args
     const user = await authenticationMiddleWare(accesstoken)
     if(!user){
-        return new Error("Please login first")
+        return new Error("Please login firstt")
     }
     const {title,descreption,tags,allowedComments}=args
     const postObject={
