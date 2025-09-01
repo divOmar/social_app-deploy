@@ -1,9 +1,11 @@
+import { createHandler } from "graphql-http/lib/use/express"
 import authRouter from "../Modules/Auth/auth.controller.js"
 import { CommentRouter } from "../Modules/Comments/comments.controller.js"
 import { postRouter } from "../Modules/Post/post.controller.js"
 import { reactRouter } from "../Modules/Reacts/react.controller.js"
 import userRouter from "../Modules/User/user.controller.js"
 import { rateLimit } from 'express-rate-limit'
+import { mainSchema } from "../GraphQl/main.schema.js"
 
 // const limiter=rateLimit({
 //         windowMs:15*60*1000,
@@ -14,6 +16,7 @@ import { rateLimit } from 'express-rate-limit'
 const routerHandler=(app,express)=>{
 // app.use(limiter)
 // app.use("/Assets",express.static('Assets'))
+app.use("/graphql",createHandler({schema:mainSchema}))
 app.use("/auth",authRouter)
 app.use("/user",userRouter)
 app.use("/post",postRouter)
